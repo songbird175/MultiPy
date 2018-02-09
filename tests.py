@@ -14,5 +14,10 @@ v_ = mp.Vector(2,0,4)
 
 # print(r_.direction())
 
-print(mp.vector_add(r_, rnaught))
-print(mp.vector_sub(rnaught, v_))
+# print(mp.vector_add(r_, rnaught))
+# print(mp.vector_sub(rnaught, v_))
+
+# print(mp.scalar_mult(rnaught, 0))
+# print(r_.magnitude() + v_.magnitude())
+
+# print(mp.dot_prod(rnaught, v_))
