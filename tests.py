@@ -7,6 +7,7 @@ import multipy as mp
 r_ = mp.Vector(5,6,7)
 rnaught = mp.Vector(1,2,3)
 v_ = mp.Vector(2,0,4)
+w_ = mp.Vector(10,12,14)
 
 # print(r_.ihat, r_.jhat, r_.khat)
 
@@ -21,3 +22,5 @@ v_ = mp.Vector(2,0,4)
 # print(r_.magnitude() + v_.magnitude())
 
 # print(mp.dot_prod(rnaught, v_))
+
+# print(mp.is_mult(r_, w_))
