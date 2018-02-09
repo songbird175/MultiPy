@@ -2,12 +2,17 @@
 A script solely for testing
 """
 
-from multipy import Vector
+import multipy as mp
 
-r_ = Vector(5,6,7)
+r_ = mp.Vector(5,6,7)
+rnaught = mp.Vector(1,2,3)
+v_ = mp.Vector(2,0,4)
 
-print(r_.ihat, r_.jhat, r_.khat)
+# print(r_.ihat, r_.jhat, r_.khat)
 
-print(r_.magnitude())
+# print(r_.magnitude())
 
-print(r_.direction())
+# print(r_.direction())
+
+print(mp.vector_add(r_, rnaught))
+print(mp.vector_sub(rnaught, v_))
