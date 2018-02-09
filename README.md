@@ -5,3 +5,5 @@
 Vector class initializes a vector instance in three dimensions. Magnitude and direction are Vector attributes.
 
 Available methods are vector addition, vector subtraction, scalar multiplication, and dot product.
+
+Other functions will: determine if two vectors are scalar multiples; find a vector based on magnitude and theta; find the angle between two vectors; find the projection of one vector onto another; and find the projection of one vector onto another based on the angle between them

@@ -3,6 +3,8 @@ Module for use in Multivariable Calculus
 """
 
 import numpy as np
+import multipy as mp
+import mpmath
 from sympy import *
 
 class Vector:
@@ -59,3 +61,22 @@ def is_mult(v, w):
     else:
         return False
 
+def find_v(magnitude, theta):
+    #finds the x & y components of a 2D vector w/ magnitude & theta relative to x-axis
+    vsub1 = magnitude * np.cos(theta)
+    vsub2 = magnitude * np.sin(theta)
+    return Vector(vsub1, vsub2, 0)
+
+def theta_between(v, w):
+    #finds the angle theta between two vectors
+    numer = mp.dot_prod(v, w)
+    denom = v.magnitude() * w.magnitude()
+    return acos(numer / denom)
+
+def projection(v, w):
+    #finds the projection of v onto w
+    return (mp.dot_prod(v, w)/w.magnitude())
+
+def projection_theta(v, theta):
+    #finds the projection of v onto another vector separated by angle theta
+    return (v.magnitude() * cos(theta))

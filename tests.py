@@ -13,7 +13,7 @@ w_ = mp.Vector(10,12,14)
 
 # print(r_.magnitude())
 
-# print(r_.direction())
+# print(rnaught.direction())
 
 # print(mp.vector_add(r_, rnaught))
 # print(mp.vector_sub(rnaught, v_))
@@ -24,3 +24,11 @@ w_ = mp.Vector(10,12,14)
 # print(mp.dot_prod(rnaught, v_))
 
 # print(mp.is_mult(r_, w_))
+
+# a_ = mp.find_v(5, 30)
+# print(a_.khat)
+
+# print(mp.theta_between(r_, rnaught))
+
+print(mp.projection(r_, rnaught))
+print(mp.projection_theta(r_, 30))
