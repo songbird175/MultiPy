@@ -83,5 +83,12 @@ def projection_theta(v, theta):
 
 def cross_prod(v, w):
     #cross product
-    M = np.array([[Symbol('i'), Symbol('j'), Symbol('k')], [v.x, v.y, v.z], [w.x, w.y, w.z]])
-    return np.linalg.det(M)
+    M = np.array([[v.x, v.y, v.z], [w.x, w.y, w.z]])
+    for_i = M[:2, 1:3]
+    for_j = np.array([M[:2, 0], M[:2, 2]])
+    for_k = M[:2, :2]
+    det_i = np.linalg.det(for_i)
+    det_j = np.linalg.det(for_j)
+    det_k = np.linalg.det(for_k)
+    return (Symbol('i') * det_i) - (Symbol('j') * det_j) + (Symbol('k') * det_k)
+

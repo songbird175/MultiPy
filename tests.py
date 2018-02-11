@@ -34,5 +34,5 @@ a_ = mp.Vector(8,9)
 # print(mp.projection(r_, rnaught))
 # print(mp.projection_theta(r_, 30))
 
-# print(mp.cross_prod(r_, v_))
+# print(mp.cross_prod(r_, a_))
 # print(a_.z)
