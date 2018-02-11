@@ -8,6 +8,7 @@ r_ = mp.Vector(5,6,7)
 rnaught = mp.Vector(1,2,3)
 v_ = mp.Vector(2,0,4)
 w_ = mp.Vector(10,12,14)
+a_ = mp.Vector(8,9)
 
 # print(r_.ihat, r_.jhat, r_.khat)
 
@@ -30,5 +31,8 @@ w_ = mp.Vector(10,12,14)
 
 # print(mp.theta_between(r_, rnaught))
 
-print(mp.projection(r_, rnaught))
-print(mp.projection_theta(r_, 30))
+# print(mp.projection(r_, rnaught))
+# print(mp.projection_theta(r_, 30))
+
+# print(mp.cross_prod(r_, v_))
+# print(a_.z)
