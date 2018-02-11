@@ -9,7 +9,7 @@ from sympy import *
 
 class Vector:
 
-    def __init__(self, x, y, z):
+    def __init__(self, x, y, z=0):
         self.x = x
         self.y = y
         self.z = z
@@ -80,3 +80,15 @@ def projection(v, w):
 def projection_theta(v, theta):
     #finds the projection of v onto another vector separated by angle theta
     return (v.magnitude() * cos(theta))
+
+def cross_prod(v, w):
+    #cross product
+    M = np.array([[v.x, v.y, v.z], [w.x, w.y, w.z]])
+    for_i = M[:2, 1:3]
+    for_j = np.array([M[:2, 0], M[:2, 2]])
+    for_k = M[:2, :2]
+    det_i = np.linalg.det(for_i)
+    det_j = np.linalg.det(for_j)
+    det_k = np.linalg.det(for_k)
+    return (Symbol('i') * det_i) - (Symbol('j') * det_j) + (Symbol('k') * det_k)
+
