@@ -1,10 +1,16 @@
 """
 My work on problem set 2 for Wellesley Math 205, Spring 2018
 """
+import sys
+sys.path.append('../')
+import multipy as mp
 
 #Section 12.3
 #Q. 39
-
+a_ = mp.Vector(-5, 12)
+b_ = mp.Vector(4, 6)
+scalar_projection = mp.scal_project(b_, a_)
+vector_projection = mp.scalar_mult(a_.direction(), scalar_projection)
 
 #Q. 49
 

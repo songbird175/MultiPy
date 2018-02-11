@@ -18,13 +18,13 @@ class Vector:
         self.khat = z * Symbol('k')
 
     def magnitude(self):
-        return (self.x + self.y + self.z)
+        return np.sqrt(self.x**2 + self.y**2 + self.z**2)
 
     def direction(self):
-        ihat_comp = self.ihat / self.magnitude()
-        jhat_comp = self.jhat / self.magnitude()
-        khat_comp = self.khat / self.magnitude()
-        return (ihat_comp, jhat_comp, khat_comp)
+        ihat_comp = self.x / self.magnitude()
+        jhat_comp = self.y / self.magnitude()
+        khat_comp = self.z / self.magnitude()
+        return Vector(ihat_comp, jhat_comp, khat_comp)
 
 def vector_add(v, w):
     #vector addition
@@ -73,9 +73,9 @@ def theta_between(v, w):
     denom = v.magnitude() * w.magnitude()
     return acos(numer / denom)
 
-def projection(v, w):
-    #finds the projection of v onto w
-    return (mp.dot_prod(v, w)/w.magnitude())
+def scal_project(v, w):
+    #finds the scalar projection of v onto w
+    return mp.dot_prod(v, w)/w.magnitude()
 
 def projection_theta(v, theta):
     #finds the projection of v onto another vector separated by angle theta
