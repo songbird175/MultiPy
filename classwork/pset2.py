@@ -13,7 +13,9 @@ scalar_projection = mp.scal_project(b_, a_)
 vector_projection = mp.scalar_mult(a_.direction(), scalar_projection)
 
 #Q. 49
-
+r_ = mp.Vector((6-0), (12-10), (20-8))
+F_ = (8, -6, 9)
+W_ = mp.dot_prod(F_, r_)
 
 #Q. 50
 
