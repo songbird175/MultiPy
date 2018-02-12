@@ -7,6 +7,13 @@ import multipy as mp
 import mpmath
 from sympy import *
 
+class Point:
+
+    def __inti__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
 class Vector:
 
     def __init__(self, x, y, z=0):
@@ -18,41 +25,41 @@ class Vector:
         self.khat = z * Symbol('k')
 
     def magnitude(self):
-        return (self.x + self.y + self.z)
+        return np.sqrt(self.x**2 + self.y**2 + self.z**2)
 
     def direction(self):
-        ihat_comp = self.ihat / self.magnitude()
-        jhat_comp = self.jhat / self.magnitude()
-        khat_comp = self.khat / self.magnitude()
-        return (ihat_comp, jhat_comp, khat_comp)
+        ihat_comp = self.x / self.magnitude()
+        jhat_comp = self.y / self.magnitude()
+        khat_comp = self.z / self.magnitude()
+        return Vector(ihat_comp, jhat_comp, khat_comp)
 
 def vector_add(v, w):
     #vector addition
-    sum_ihat = v.ihat + w.ihat
-    sum_jhat = v.jhat + w.jhat
-    sum_khat = v.khat + w.khat
-    return (sum_ihat, sum_jhat, sum_khat)
+    sum_ihat = v.x + w.x
+    sum_jhat = v.y + w.y
+    sum_khat = v.z + w.z
+    return Vector(sum_ihat, sum_jhat, sum_khat)
 
 def vector_sub(v, w):
     #vector subtraction
-    diff_ihat = v.ihat - w.ihat
-    diff_jhat = v.jhat - w.jhat
-    diff_khat = v.khat - w.khat
-    return (diff_ihat, diff_jhat, diff_khat)
+    diff_ihat = v.x - w.x
+    diff_jhat = v.y - w.y
+    diff_khat = v.z - w.z
+    return Vector(diff_ihat, diff_jhat, diff_khat)
 
 def scalar_mult(v, n):
     #scalar multiplication
-    scal_ihat = v.ihat * n
-    scal_jhat = v.jhat * n
-    scal_khat = v.khat * n
-    return (scal_ihat, scal_jhat, scal_khat)
+    scal_ihat = v.x * n
+    scal_jhat = v.y * n
+    scal_khat = v.z * n
+    return Vector(scal_ihat, scal_jhat, scal_khat)
 
 def dot_prod(v, w):
     #dot product
     dot_i = v.x * w.x
     dot_j = v.y * w.y
     dot_k = v.z * w.z
-    return (dot_i + dot_j + dot_k)
+    return dot_i + dot_j + dot_k
 
 def is_mult(v, w):
     #checks if two vectors are scalar multiples of each other (parallel)
@@ -65,7 +72,7 @@ def find_v(magnitude, theta):
     #finds the x & y components of a 2D vector w/ magnitude & theta relative to x-axis
     vsub1 = magnitude * np.cos(theta)
     vsub2 = magnitude * np.sin(theta)
-    return Vector(vsub1, vsub2, 0)
+    return Vector(vsub1, vsub2)
 
 def theta_between(v, w):
     #finds the angle theta between two vectors
@@ -73,9 +80,9 @@ def theta_between(v, w):
     denom = v.magnitude() * w.magnitude()
     return acos(numer / denom)
 
-def projection(v, w):
-    #finds the projection of v onto w
-    return (mp.dot_prod(v, w)/w.magnitude())
+def scal_project(v, w):
+    #finds the scalar projection of v onto w
+    return mp.dot_prod(v, w)/w.magnitude()
 
 def projection_theta(v, theta):
     #finds the projection of v onto another vector separated by angle theta
@@ -90,5 +97,13 @@ def cross_prod(v, w):
     det_i = np.linalg.det(for_i)
     det_j = np.linalg.det(for_j)
     det_k = np.linalg.det(for_k)
-    return (Symbol('i') * det_i) - (Symbol('j') * det_j) + (Symbol('k') * det_k)
+    return Vector(det_i, -det_j, det_k)
 
+def cross_magnitude(m, n, theta):
+    #magnitude of the cross product
+    return m * n * sin(theta)
+
+def triple_scal_prod(u, v, w):
+    #triple scalar product
+    cross = mp.cross_prod(v, w)
+    return mp.dot_prod(u, cross)
