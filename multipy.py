@@ -7,6 +7,13 @@ import multipy as mp
 import mpmath
 from sympy import *
 
+class Point:
+
+    def __inti__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
 class Vector:
 
     def __init__(self, x, y, z=0):

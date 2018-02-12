@@ -4,6 +4,7 @@ My work on problem set 2 for Wellesley Math 205, Spring 2018
 import sys
 sys.path.append('../')
 import multipy as mp
+from sympy import *
 
 #Section 12.3
 #Q. 39
@@ -75,15 +76,24 @@ area_parallelepiped = mp.triple_scal_prod(a1_, b1_, c1_)
 
 
 #Q. 19
-
+t = Symbol('t')
+s = Symbol('s')
+L1_ = mp.Vector((3 + 2*t), (4-t), (1 - 3*t))
+L2_ = mp.Vector((1), (3 - 2*s), (4 + 5*s))
+par = mp.is_mult(L1_, L2_)
 
 #Q. 25
 
 
 #Q. 31
-
+AB_ = mp.Vector(1, -1, 0)
+AC_ = mp.Vector(1, 0, -1)
+n_ = mp.cross_prod(AB_, AC_)
 
 #Q. 41
 
 
 #Q. 59
+n1_ = mp.Vector(5, -2, -2)
+n2_ = mp.Vector(4, 1, 1)
+v2_ = mp.cross_prod(n1_, n2_)
