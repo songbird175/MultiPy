@@ -31,28 +31,28 @@ def vector_add(v, w):
     sum_ihat = v.ihat + w.ihat
     sum_jhat = v.jhat + w.jhat
     sum_khat = v.khat + w.khat
-    return (sum_ihat, sum_jhat, sum_khat)
+    return Vector(sum_ihat, sum_jhat, sum_khat)
 
 def vector_sub(v, w):
     #vector subtraction
     diff_ihat = v.ihat - w.ihat
     diff_jhat = v.jhat - w.jhat
     diff_khat = v.khat - w.khat
-    return (diff_ihat, diff_jhat, diff_khat)
+    return Vector(diff_ihat, diff_jhat, diff_khat)
 
 def scalar_mult(v, n):
     #scalar multiplication
     scal_ihat = v.ihat * n
     scal_jhat = v.jhat * n
     scal_khat = v.khat * n
-    return (scal_ihat, scal_jhat, scal_khat)
+    return Vector(scal_ihat, scal_jhat, scal_khat)
 
 def dot_prod(v, w):
     #dot product
     dot_i = v.x * w.x
     dot_j = v.y * w.y
     dot_k = v.z * w.z
-    return (dot_i + dot_j + dot_k)
+    return dot_i + dot_j + dot_k
 
 def is_mult(v, w):
     #checks if two vectors are scalar multiples of each other (parallel)
@@ -65,7 +65,7 @@ def find_v(magnitude, theta):
     #finds the x & y components of a 2D vector w/ magnitude & theta relative to x-axis
     vsub1 = magnitude * np.cos(theta)
     vsub2 = magnitude * np.sin(theta)
-    return Vector(vsub1, vsub2, 0)
+    return Vector(vsub1, vsub2)
 
 def theta_between(v, w):
     #finds the angle theta between two vectors
@@ -90,5 +90,8 @@ def cross_prod(v, w):
     det_i = np.linalg.det(for_i)
     det_j = np.linalg.det(for_j)
     det_k = np.linalg.det(for_k)
-    return (Symbol('i') * det_i) - (Symbol('j') * det_j) + (Symbol('k') * det_k)
+    return Vector(det_i, -det_j, det_k)
+
+def cross_magnitude(m, n, theta):
+    return m * n * sin(theta)
 
