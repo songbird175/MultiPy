@@ -7,6 +7,13 @@ import multipy as mp
 import mpmath
 from sympy import *
 
+class Point:
+
+    def __inti__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
 class Vector:
 
     def __init__(self, x, y, z=0):
@@ -28,23 +35,23 @@ class Vector:
 
 def vector_add(v, w):
     #vector addition
-    sum_ihat = v.ihat + w.ihat
-    sum_jhat = v.jhat + w.jhat
-    sum_khat = v.khat + w.khat
+    sum_ihat = v.x + w.x
+    sum_jhat = v.y + w.y
+    sum_khat = v.z + w.z
     return Vector(sum_ihat, sum_jhat, sum_khat)
 
 def vector_sub(v, w):
     #vector subtraction
-    diff_ihat = v.ihat - w.ihat
-    diff_jhat = v.jhat - w.jhat
-    diff_khat = v.khat - w.khat
+    diff_ihat = v.x - w.x
+    diff_jhat = v.y - w.y
+    diff_khat = v.z - w.z
     return Vector(diff_ihat, diff_jhat, diff_khat)
 
 def scalar_mult(v, n):
     #scalar multiplication
-    scal_ihat = v.ihat * n
-    scal_jhat = v.jhat * n
-    scal_khat = v.khat * n
+    scal_ihat = v.x * n
+    scal_jhat = v.y * n
+    scal_khat = v.z * n
     return Vector(scal_ihat, scal_jhat, scal_khat)
 
 def dot_prod(v, w):
