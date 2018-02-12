@@ -93,5 +93,10 @@ def cross_prod(v, w):
     return Vector(det_i, -det_j, det_k)
 
 def cross_magnitude(m, n, theta):
+    #magnitude of the cross product
     return m * n * sin(theta)
 
+def triple_scal_prod(u, v, w):
+    #triple scalar product
+    cross = mp.cross_prod(v, w)
+    return mp.dot_prod(u, cross)

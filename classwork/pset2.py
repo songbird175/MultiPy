@@ -45,16 +45,27 @@ cross_uv_hat = cross_uv.direction()
 cross_vu_hat = cross_vu.direction()
 
 #Q. 27
-
+AB = mp.Vector((-1 - (-3)), (3-0))
+AC = mp.Vector((5 - (-3)), (2-0))
+cross_ABAC = mp.cross_prod(AB, AC)
+area = cross_ABAC.magnitude()
 
 #Q. 29
-
+#a)
+PQ = mp.Vector((-2 -1), (1-0), (3-1))
+PR = mp.Vector((4-1), (2-0), (5-1))
+nonzero_vector = mp.cross_prod(PQ, PR)
+#b)
+area_triangle = nonzero_vector.magnitude() / 2
 
 #Q. 33
-
+a1_ = mp.Vector(1,2,3)
+b1_ = mp.Vector(-1,1,2)
+c1_ = mp.Vector(2,1,4)
+area_parallelepiped = mp.triple_scal_prod(a1_, b1_, c1_)
 
 #Q. 53
-
+#explanation
 
 #Section 12.5
 #Q. 3
