@@ -100,3 +100,8 @@ def triple_scal_prod(u, v, w):
     #triple scalar product
     cross = mp.cross_prod(v, w)
     return mp.dot_prod(u, cross)
+
+def position_vector(rnaught, v, t):
+    #finds the position vector given initial point, direction vector, & time t
+    tv = mp.scalar_mult(v, t)
+    return mp.vector_add(rnaught, tv)
