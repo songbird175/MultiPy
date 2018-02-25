@@ -5,7 +5,9 @@ Module for use in Multivariable Calculus
 import numpy as np
 import multipy as mp
 import mpmath
-from sympy import Symbol, sin, cos, asin, acos
+import matplotlib.pyplot as plt
+# from sympy import Symbol, sin, cos, asin, acos, subs
+from sympy import *
 
 class Point:
 
@@ -63,6 +65,9 @@ class Parametric:
         z = self.direction.z * (-self.rnaught.y / self.direction.y) + self.rnaught.z
         return (x, z)
 
+    def r(self):
+        return mp.Vector(self.eq_x, self.eq_y, self.eq_z)
+
 class Plane:
 
     def __init__(self, rnaught, n):
@@ -90,6 +95,24 @@ class Plane:
     def z_intercept(self):
         numer = (self.n.y * self.rnaught.y) + (self.n.x * self.rnaught.x)
         return (numer / self.n.z) + self.rnaught.z
+
+class VVF:
+
+    def __init__(self, i, j, k):
+        self.t = Symbol('t')
+        self.x = sympify(i)
+        self.y = sympify(j)
+        self.z = sympify(k)
+        self.eq = self.x + self.y + self.z
+        self.ihat = i * Symbol('i')
+        self.jhat = j * Symbol('j')
+        self.khat = k * Symbol('k')
+
+    def vis(self, domain=range(-50,50)):
+        for num in domain:
+            pnt = self.eq.evalf(subs={self.t:num}) #could be a problem here
+            plt.plot(pnt) #also could be using the wrong plot function for this
+        return plt.show()
 
 def vector_add(v, w):
     #vector addition

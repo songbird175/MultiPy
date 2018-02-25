@@ -3,6 +3,7 @@ A script solely for testing
 """
 
 import multipy as mp
+from sympy import *
 
 r_ = mp.Vector(5,6,7)
 rnaught = mp.Vector(1,2,3)
@@ -16,6 +17,12 @@ paramAB = mp.Parametric(A, AB)
 pnaught = mp.Point(1, 3, -2)
 n = mp.Vector(2, 1, -1)
 planeP = mp.Plane(pnaught, n)
+r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
+
+r_of_t.vis(range(-5,5))
+# print(r_of_t.x)
+
+# print(paramAB.r().x)
 
 # print(planeP.gen_eq)
 # print(planeP.x_intercept())
