@@ -13,6 +13,16 @@ A = mp.Point(1, 2, 3)
 B = mp.Point(4, 0, 2)
 AB = mp.Vector(3, -2, -1)
 paramAB = mp.Parametric(A, AB)
+pnaught = mp.Point(1, 3, -2)
+n = mp.Vector(2, 1, -1)
+planeP = mp.Plane(pnaught, n)
+
+# print(planeP.gen_eq)
+# print(planeP.x_intercept())
+# print(planeP.y_intercept())
+# print(planeP.z_intercept())
+
+# print(planeP.equation)
 
 # print(paramAB.eq_x)
 
