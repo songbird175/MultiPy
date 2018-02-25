@@ -122,6 +122,14 @@ class VVF:
         ax.plot(xs, ys, zs)
         return plt.show()
 
+    def continuous(self, a):
+        mylim = limit(self.eq, self.t, a)
+        ev = self.eq.evalf(subs={self.t:a})
+        if ev == mylim:
+            return True, mylim
+        else:
+            return False, mylim, ev
+
 def vector_add(v, w):
     #vector addition
     sum_ihat = v.x + w.x
