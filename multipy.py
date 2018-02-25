@@ -6,6 +6,7 @@ import numpy as np
 import multipy as mp
 import mpmath
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 # from sympy import Symbol, sin, cos, asin, acos, subs
 from sympy import *
 
@@ -108,10 +109,17 @@ class VVF:
         self.jhat = j * Symbol('j')
         self.khat = k * Symbol('k')
 
-    def vis(self, domain=range(-50,50)):
+    def vis(self, domain=np.arange(-10,10,0.02)):
+        xs, ys, zs = np.zeros(len(domain)), np.zeros(len(domain)), np.zeros(len(domain))
+        pos = 0
+        fig = plt.figure()
+        ax = fig.gca(projection='3d')
         for num in domain:
-            pnt = self.eq.evalf(subs={self.t:num}) #could be a problem here
-            plt.plot(pnt) #also could be using the wrong plot function for this
+            xs[pos] = self.x.evalf(subs={self.t:num})
+            ys[pos] = self.y.evalf(subs={self.t:num})
+            zs[pos] = self.z.evalf(subs={self.t:num})
+            pos += 1
+        ax.plot(xs, ys, zs)
         return plt.show()
 
 def vector_add(v, w):
