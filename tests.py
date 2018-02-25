@@ -9,6 +9,19 @@ rnaught = mp.Vector(1,2,3)
 v_ = mp.Vector(2,0,4)
 w_ = mp.Vector(10,12,14)
 a_ = mp.Vector(8,9)
+A = mp.Point(1, 2, 3)
+B = mp.Point(4, 0, 2)
+AB = mp.Vector(3, -2, -1)
+paramAB = mp.Parametric(A, AB)
+
+# print(paramAB.eq_x)
+
+# print(paramAB.xy_intercept())
+# print(paramAB.yz_intercept())
+# print(paramAB.xz_intercept())
+
+# print(paramAB.equations())
+# print(paramAB.symmetric_x, paramAB.symmetric_y, paramAB.symmetric_z)
 
 # print(r_.ihat, r_.jhat, r_.khat)
 

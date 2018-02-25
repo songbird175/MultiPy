@@ -7,9 +7,10 @@ import multipy as mp
 import mpmath
 from sympy import *
 
+
 class Point:
 
-    def __inti__(self, x, y, z=0):
+    def __init__(self, x, y, z=0):
         self.x = x
         self.y = y
         self.z = z
@@ -112,3 +113,33 @@ def position_vector(rnaught, v, t):
     #finds the position vector given initial point, direction vector, & time t
     tv = mp.scalar_mult(v, t)
     return mp.vector_add(rnaught, tv)
+
+class Parametric:
+
+    def __init__(self, rnaught, v, t=Symbol('t')):
+        self.rnaught = rnaught
+        self.direction = v
+        self.t = t
+
+        self.symmetric_x = (Symbol('x') - rnaught.x) / v.x
+        self.symmetric_y = (Symbol('y') - rnaught.y) / v.y
+        self.symmetric_z = (Symbol('z') - rnaught.z) / v.z
+
+        self.eq_x = self.rnaught.x + (self.direction.x * self.t)
+        self.eq_y = self.rnaught.y + (self.direction.y * self.t)
+        self.eq_z = self.rnaught.z + (self.direction.z * self.t)
+
+    def xy_intercept(self):
+        x = self.direction.x * (-self.rnaught.z / self.direction.z) + self.rnaught.x
+        y = self.direction.y * (-self.rnaught.z / self.direction.z) + self.rnaught.y
+        return (x, y)
+
+    def yz_intercept(self):
+        y = self.direction.y * (-self.rnaught.x / self.direction.x) + self.rnaught.y
+        z = self.direction.z * (-self.rnaught.x / self.direction.x) + self.rnaught.z
+        return (y, z)
+
+    def xz_intercept(self):
+        x = self.direction.x * (-self.rnaught.y / self.direction.y) + self.rnaught.x
+        z = self.direction.z * (-self.rnaught.y / self.direction.y) + self.rnaught.z
+        return (x, z)
