@@ -20,6 +20,9 @@ n = mp.Vector(2, 1, -1)
 planeP = mp.Plane(pnaught, n)
 r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 
+
+# print(r_of_t.secant_vector().x)
+
 # rt2 = mp.VVF((Symbol('t')**2), Symbol('t'), Symbol('t')**3)
 # print(rt2.derivative())
 # print(r_of_t.derivative())

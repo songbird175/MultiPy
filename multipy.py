@@ -100,6 +100,7 @@ class VVF:
 
     def __init__(self, i, j, k):
         self.t = Symbol('t')
+        self.h = Symbol('h')
         self.x = sympify(i)
         self.y = sympify(j)
         self.z = sympify(k)
@@ -130,10 +131,9 @@ class VVF:
             return False, mylim, ev
 
     def derivative(self):
-        h = Symbol('h')
         r = self.eq
-        rh = self.eq.subs(self.t, (Symbol('t') + Symbol('h')))
-        return limit((rh - r) / h, h, 0)
+        rh = self.eq.subs(self.t, (self.t + self.h))
+        return limit((rh - r) / self.h, self.h, 0)
 
 def vector_add(v, w):
     #vector addition
