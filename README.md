@@ -7,3 +7,9 @@ Vector class initializes a vector instance in three dimensions. Magnitude and di
 Available methods are vector addition, vector subtraction, scalar multiplication, dot product, cross product, and triple scalar product.
 
 Other functions: determine if two vectors are scalar multiples; find a vector based on magnitude and theta; find the angle between two vectors; find the projection of one vector onto another; find the projection of one vector onto another based on the angle between them; find the magnitude of cross product given vector magnitudes and theta
+
+New class for parametric equations. Cannot find the intersection of two lines; can manipulate parametric properties
+
+New class for planes. Axes intercepts, as well as the general equation for the plane, are class attributes
+
+New class for vector-valued functions. Can now visualize a curve in 3D space, take the derivative, and check if a function is continuous at a point
