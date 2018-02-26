@@ -20,6 +20,10 @@ n = mp.Vector(2, 1, -1)
 planeP = mp.Plane(pnaught, n)
 r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 
+# rt2 = mp.VVF((Symbol('t')**2), Symbol('t'), Symbol('t')**3)
+# print(rt2.derivative())
+# print(r_of_t.derivative())
+
 # print(r_of_t.continuous(2*np.pi))
 
 # example1 = mp.VVF((3*cos(2*Symbol('t'))), (4*sin(2*Symbol('t'))), Symbol('t'))

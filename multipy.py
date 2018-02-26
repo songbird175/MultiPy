@@ -7,7 +7,6 @@ import multipy as mp
 import mpmath
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-# from sympy import Symbol, sin, cos, asin, acos, subs
 from sympy import *
 
 class Point:
@@ -129,6 +128,12 @@ class VVF:
             return True, mylim
         else:
             return False, mylim, ev
+
+    def derivative(self):
+        h = Symbol('h')
+        r = self.eq
+        rh = self.eq.subs(self.t, (Symbol('t') + Symbol('h')))
+        return limit((rh - r) / h, h, 0)
 
 def vector_add(v, w):
     #vector addition
