@@ -11,3 +11,5 @@ Other functions: determine if two vectors are scalar multiples; find a vector ba
 New class for parametric equations. Cannot find the intersection of two lines; can manipulate parametric properties
 
 New class for planes. Axes intercepts, as well as the general equation for the plane, are class attributes
+
+New class for vector-valued functions. Can now visualize a curve in 3D space, take the derivative, and check if a function is continuous at a point
