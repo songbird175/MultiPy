@@ -5,6 +5,7 @@ Module for use in Multivariable Calculus
 import numpy as np
 import multipy as mp
 import mpmath
+import seaborn
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from sympy import *
@@ -98,7 +99,7 @@ class Plane:
 
 class VVF:
 
-    def __init__(self, i, j, k):
+    def __init__(self, i, j, k=0):
         self.t = Symbol('t')
         self.h = Symbol('h')
         self.x = sympify(i)
@@ -134,6 +135,19 @@ class VVF:
         r = self.eq
         rh = self.eq.subs(self.t, (self.t + self.h))
         return limit((rh - r) / self.h, self.h, 0)
+
+    def pos_vector(self, t):
+        xpos = [self.x.subs(self.t, t)]
+        ypos = [self.y.subs(self.t, t)]
+        zpos = [self.z.subs(self.t, t)]
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        ax.set_xlim(0, 5)
+        ax.set_ylim(0, 5)
+        ax.set_zlim(0, 5)
+        ax.quiver([0], [0], [0], xpos, ypos, zpos, pivot='tail')
+        plt.show()
+        return mp.Vector(xpos[0], ypos[0], zpos[0])
 
 def vector_add(v, w):
     #vector addition

@@ -1,5 +1,5 @@
 """
-Code used for problem set 3
+Code used for problem set 3. Code commented out so variable names could be re-used.
 """
 import sys
 sys.path.append('../')
@@ -32,8 +32,30 @@ from sympy import *
 # g = mp.VVF(cos(Symbol('t'))**2, sin(Symbol('t'))**2, Symbol('t'))
 # g.vis()
 
-#q50
-# r1 = mp.VVF(Symbol('t'), Symbol('t')**2, Symbol('t')**3)
-# r2 = mp.VVF(1+2*Symbol('t'), 1+6*Symbol('t'), 1+14*Symbol('t'))
-# r1.vis()
-# r2.vis()
+#q7
+# r_t = mp.VVF(4*sin(Symbol('t')), -2*cos(Symbol('t')))
+# r_t.vis()
+# t = (3*np.pi) / 4
+# pos1 = r_t.pos_vector(t)
+# rprime = mp.VVF(4*cos(Symbol('t')), 2*sin(Symbol('t')))
+# rprime.pos_vector(t)
+
+#q19
+# r_t = mp.VVF(cos(Symbol('t')), 3*Symbol('t'), 2*sin(2*Symbol('t')))
+# print(r_t.derivative())
+# T = mp.VVF(-sin(Symbol('t')), 3, 4*cos(2*Symbol('t')))
+# T.pos_vector(0)
+# That = mp.Vector(0, 3, 4)
+# print(That.direction().x, That.direction().y, That.direction().z)
+
+#q23
+# line1 = mp.VVF(Symbol('t')**2+1, 4*np.sqrt(Symbol('t')), np.exp(Symbol('t')**2 - Symbol('t')))
+# print(line1.derivative())
+
+#q5
+# r_t = mp.VVF(3*cos(Symbol('t')), 2*sin(Symbol('t')))
+# r_t.vis()
+# vel = mp.VVF(-3*sin(Symbol('t')), 2*cos(Symbol('t')))
+# vel.pos_vector(pi/3)
+# acc = mp.VVF(-3*cos(Symbol('t')), -2*sin(Symbol('t')))
+# acc.pos_vector(pi/3)
