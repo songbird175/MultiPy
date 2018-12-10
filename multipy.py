@@ -36,6 +36,24 @@ class Vector:
         khat_comp = self.z / self.magnitude()
         return Vector(ihat_comp, jhat_comp, khat_comp)
 
+    def scalar_mult(self, n):
+    #scalar multiplication
+        scal_ihat = self.x * n
+        scal_jhat = self.y * n
+        scal_khat = self.z * n
+        return Vector(scal_ihat, scal_jhat, scal_khat)
+
+    def is_mult(self, w):
+        #checks if two vectors are scalar multiples of each other (parallel)
+        if self.ihat / w.ihat == self.jhat / w.jhat and self.ihat / w.ihat == self.khat / w.khat:
+            return True
+        else:
+            return False
+
+    def projection_theta(self, theta):
+        #finds the projection onto another vector separated by angle theta
+        return (self.magnitude() * np.cos(theta))
+
 class Parametric:
 
     def __init__(self, rnaught, v, t=Symbol('t')):
@@ -163,26 +181,12 @@ def vector_sub(v, w):
     diff_khat = v.z - w.z
     return Vector(diff_ihat, diff_jhat, diff_khat)
 
-def scalar_mult(v, n):
-    #scalar multiplication
-    scal_ihat = v.x * n
-    scal_jhat = v.y * n
-    scal_khat = v.z * n
-    return Vector(scal_ihat, scal_jhat, scal_khat)
-
 def dot_prod(v, w):
     #dot product
     dot_i = v.x * w.x
     dot_j = v.y * w.y
     dot_k = v.z * w.z
     return dot_i + dot_j + dot_k
-
-def is_mult(v, w):
-    #checks if two vectors are scalar multiples of each other (parallel)
-    if v.ihat / w.ihat == v.jhat / w.jhat and v.ihat / w.ihat == v.khat / w.khat:
-        return True
-    else:
-        return False
 
 def find_v(magnitude, theta):
     #finds the x & y components of a 2D vector w/ magnitude & theta relative to x-axis
@@ -199,10 +203,6 @@ def theta_between(v, w):
 def scal_project(v, w):
     #finds the scalar projection of v onto w
     return mp.dot_prod(v, w)/w.magnitude()
-
-def projection_theta(v, theta):
-    #finds the projection of v onto another vector separated by angle theta
-    return (v.magnitude() * cos(theta))
 
 def cross_prod(v, w):
     #cross product

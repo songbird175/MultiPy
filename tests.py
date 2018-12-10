@@ -79,3 +79,10 @@ r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 
 # print(mp.cross_prod(r_, a_))
 # print(a_.z)
+
+# a = r_.scalar_mult(3)
+# print(a.x, a.y, a.z)
+
+# print(r_.is_mult(w_), w_.is_mult(r_), r_.is_mult(v_))
+
+print(a_.projection_theta(30))
