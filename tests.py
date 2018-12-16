@@ -93,5 +93,6 @@ def test_func(x):
 a = mp.ScalarFunc(test_func)
 # print(a.x_vals)
 # print(a.y_vals)
-a.vis()
+# a.vis()
 # print(a.func_title)
+# a.contour()

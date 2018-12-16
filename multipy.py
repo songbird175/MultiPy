@@ -10,49 +10,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from sympy import *
 
-class Point:
-
-    def __init__(self, x, y, z=0):
-        self.x = x
-        self.y = y
-        self.z = z
-
-class Vector:
-
-    def __init__(self, x, y, z=0):
-        self.x = x
-        self.y = y
-        self.z = z
-        self.ihat = x * Symbol('i')
-        self.jhat = y * Symbol('j')
-        self.khat = z * Symbol('k')
-
-    def magnitude(self):
-        return np.sqrt(self.x**2 + self.y**2 + self.z**2)
-
-    def direction(self):
-        ihat_comp = self.x / self.magnitude()
-        jhat_comp = self.y / self.magnitude()
-        khat_comp = self.z / self.magnitude()
-        return Vector(ihat_comp, jhat_comp, khat_comp)
-
-    def scalar_mult(self, n):
-    #scalar multiplication
-        scal_ihat = self.x * n
-        scal_jhat = self.y * n
-        scal_khat = self.z * n
-        return Vector(scal_ihat, scal_jhat, scal_khat)
-
-    def is_mult(self, w):
-        #checks if two vectors are scalar multiples of each other (parallel)
-        if self.ihat / w.ihat == self.jhat / w.jhat and self.ihat / w.ihat == self.khat / w.khat:
-            return True
-        else:
-            return False
-
-    def projection_theta(self, theta):
-        #finds the projection onto another vector separated by angle theta
-        return (self.magnitude() * np.cos(theta))
+#TODO: add more comments, especially in classes that have none
 
 class Parametric:
 
@@ -115,18 +73,85 @@ class Plane:
         numer = (self.n.y * self.rnaught.y) + (self.n.x * self.rnaught.x)
         return (numer / self.n.z) + self.rnaught.z
 
+class Point:
+
+    def __init__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+
 class ScalarFunc:
+
+    #TODO: make the way this class works more generalized
     
-    def __init__(self, f_of):
+    def __init__(self, f_of, delta=0.5):
         self.func = f_of
         self.func_title = str(f_of(Symbol('x')))
-        self.x_vals = [x for x in range(-5,6)]
+        self.delta = delta
+        self.x_vals = np.arange(-5,6, self.delta)
         self.y_vals = [self.func(x) for x in self.x_vals]
 
     def vis(self):
         fig = plt.plot(self.x_vals, self.y_vals)
         plt.title('f(x) = %s' % (self.func_title))
         plt.show()
+
+    def contour(self):
+        X, Y = np.meshgrid(self.x_vals, self.y_vals)
+        Z = X
+        con = plt.contourf(X, Y, Z)
+        plt.title('Contour plot of f(x) = %s' % (self.func_title))
+        plt.show()
+        return X, Y, Z
+
+
+    #TODO: figure out how plotting gradient works
+    #TODO: plot contour and gradient together
+
+    # def gradient(self):
+    #     X, Y, Z = self.contour()
+    #     X_grad = np.gradient(X)
+    #     Y_grad = np.gradient(Y)
+    #     Z_grad = np.gradient(Z)
+    #     plt.quiver(X_grad, Y_grad, Z_grad)
+    #     plt.show()
+
+class Vector:
+
+    def __init__(self, x, y, z=0):
+        self.x = x
+        self.y = y
+        self.z = z
+        self.ihat = x * Symbol('i')
+        self.jhat = y * Symbol('j')
+        self.khat = z * Symbol('k')
+
+    def magnitude(self):
+        return np.sqrt(self.x**2 + self.y**2 + self.z**2)
+
+    def direction(self):
+        ihat_comp = self.x / self.magnitude()
+        jhat_comp = self.y / self.magnitude()
+        khat_comp = self.z / self.magnitude()
+        return Vector(ihat_comp, jhat_comp, khat_comp)
+
+    def scalar_mult(self, n):
+        #scalar multiplication
+        scal_ihat = self.x * n
+        scal_jhat = self.y * n
+        scal_khat = self.z * n
+        return Vector(scal_ihat, scal_jhat, scal_khat)
+
+    def is_mult(self, w):
+        #checks if two vectors are scalar multiples of each other (parallel)
+        if self.ihat / w.ihat == self.jhat / w.jhat and self.ihat / w.ihat == self.khat / w.khat:
+            return True
+        else:
+            return False
+
+    def projection_theta(self, theta):
+        #finds the projection onto another vector separated by angle theta
+        return (self.magnitude() * np.cos(theta))
 
 class VVF:
 
