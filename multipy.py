@@ -115,6 +115,19 @@ class Plane:
         numer = (self.n.y * self.rnaught.y) + (self.n.x * self.rnaught.x)
         return (numer / self.n.z) + self.rnaught.z
 
+class ScalarFunc:
+    
+    def __init__(self, f_of):
+        self.func = f_of
+        self.func_title = str(f_of(Symbol('x')))
+        self.x_vals = [x for x in range(-5,6)]
+        self.y_vals = [self.func(x) for x in self.x_vals]
+
+    def vis(self):
+        fig = plt.plot(self.x_vals, self.y_vals)
+        plt.title('f(x) = %s' % (self.func_title))
+        plt.show()
+
 class VVF:
 
     def __init__(self, i, j, k=0):

@@ -85,4 +85,13 @@ r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 
 # print(r_.is_mult(w_), w_.is_mult(r_), r_.is_mult(v_))
 
-print(a_.projection_theta(30))
+# print(a_.projection_theta(30))
+
+def test_func(x):
+    return 2*x
+
+a = mp.ScalarFunc(test_func)
+# print(a.x_vals)
+# print(a.y_vals)
+a.vis()
+# print(a.func_title)
