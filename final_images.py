@@ -6,6 +6,7 @@ import multipy as mp
 import matplotlib.pyplot as plt
 import numpy as np
 from sympy import *
+from sympy.physics.vector import ReferenceFrame, curl
 
 # #image 1, a scalar function
 # def example_scalar(x):
@@ -42,3 +43,16 @@ from sympy import *
 
 # vecf = mp.VectorField(myX, myY, myZ)
 # vecf.vis()
+
+# #curl of a vector field
+# R = ReferenceFrame('R')
+# F = R[0]**2 * R[1] * R.x + R[1]*3 * R.y
+# G = curl(F, R)
+
+#image 13, a 2D curve
+# curve1 = mp.VVF(Symbol('t')**3, 4*Symbol('t'))
+# curve1.vis()
+
+#image 14, a 3D curve
+r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
+r_of_t.vis()

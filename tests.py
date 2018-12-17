@@ -99,14 +99,14 @@ r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 # pt1 = mp.Point(5,3)
 # pt1.vis()
 
-def myX(x,y,z):
-    return x
+# def myX(x,y,z):
+#     return x
 
-def myY(x,y,z):
-    return y
+# def myY(x,y,z):
+#     return y
 
-def myZ(x,y,z):
-    return z
+# def myZ(x,y,z):
+#     return 0
 
-vecf = mp.VectorField(myX, myY, myZ)
-vecf.vis()
+# vecf = mp.VectorField(myX, myY, myZ)
+# vecf.vis()

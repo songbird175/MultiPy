@@ -160,6 +160,10 @@ class Vector:
 class VectorField:
 
     def __init__(self, X, Y, Z):
+        # self.R = sympy.physics.vector.ReferenceFrame
+        #TODO: figure out how to include curl (sympy.physics.vector.curl)
+        self.X_sym = X(Symbol('x'), Symbol('y'), Symbol('z'))
+        self.Y_sym = Y(Symbol('x'), Symbol('y'), Symbol('z'))
         self.Z_sym = Z(Symbol('x'), Symbol('y'), Symbol('z'))
         self.ihat = str(X(Symbol('x'), Symbol('y'), Symbol('z'))) + "i"
         self.jhat = str(Y(Symbol('x'), Symbol('y'), Symbol('z'))) + "j"
@@ -190,6 +194,15 @@ class VectorField:
         plt.title("Vector field of %s + %s + %s" % (self.ihat, self.jhat, self.khat))
         plt.show()
 
+    #TODO: figure out derivative of the vector field
+
+    #TODO: implement divergence calculation better
+    # def diverge(self):
+    #     if self.Z_sym == 0:
+    #         return np.sum(np.gradient(self.X, self.Y))
+    #     else:
+    #         return
+
 
 class VVF:
 
@@ -215,6 +228,7 @@ class VVF:
             zs[pos] = self.z.evalf(subs={self.t:num})
             pos += 1
         ax.plot(xs, ys, zs)
+        plt.title('The curve cos(t)i + sin(t)j + tk')
         return plt.show()
 
     def continuous(self, a):
@@ -230,6 +244,7 @@ class VVF:
         rh = self.eq.subs(self.t, (self.t + self.h))
         return limit((rh - r) / self.h, self.h, 0)
 
+    #TODO: figure out how to plot this in the same image as the curve
     def pos_vector(self, t):
         xpos = [self.x.subs(self.t, t)]
         ypos = [self.y.subs(self.t, t)]
