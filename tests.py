@@ -87,12 +87,26 @@ r_of_t = mp.VVF(cos(Symbol('t')), sin(Symbol('t')), Symbol('t'))
 
 # print(a_.projection_theta(30))
 
-def test_func(x):
-    return 2*x
+# def test_func(x):
+#     return 2*x
 
-a = mp.ScalarFunc(test_func)
+# a = mp.ScalarFunc(test_func)
 # print(a.x_vals)
 # print(a.y_vals)
 # a.vis()
 # print(a.func_title)
 # a.contour()
+# pt1 = mp.Point(5,3)
+# pt1.vis()
+
+def myX(x,y,z):
+    return x
+
+def myY(x,y,z):
+    return y
+
+def myZ(x,y,z):
+    return z
+
+vecf = mp.VectorField(myX, myY, myZ)
+vecf.vis()

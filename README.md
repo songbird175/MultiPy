@@ -15,3 +15,7 @@ New class for planes. Axes intercepts, as well as the general equation for the p
 New class for vector-valued functions. Can now visualize a curve in 3D space, take the derivative, and check if a function is continuous at a point
 
 Scalar functions can be plotted, and contour plots are a method of the ScalarFunc class.
+
+Point class can now be visualized.
+
+New class for vector fields; can be visualized.

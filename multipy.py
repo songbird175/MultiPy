@@ -80,6 +80,10 @@ class Point:
         self.y = y
         self.z = z
 
+    def vis(self):
+        plt.plot([self.x], [self.y], marker='o')
+        plt.show()
+
 class ScalarFunc:
 
     #TODO: make the way this class works more generalized
@@ -152,6 +156,40 @@ class Vector:
     def projection_theta(self, theta):
         #finds the projection onto another vector separated by angle theta
         return (self.magnitude() * np.cos(theta))
+
+class VectorField:
+
+    def __init__(self, X, Y, Z):
+        self.Z_sym = Z(Symbol('x'), Symbol('y'), Symbol('z'))
+        self.ihat = str(X(Symbol('x'), Symbol('y'), Symbol('z'))) + "i"
+        self.jhat = str(Y(Symbol('x'), Symbol('y'), Symbol('z'))) + "j"
+        self.khat = str(Z(Symbol('x'), Symbol('y'), Symbol('z'))) + "k"
+
+        self.mr = np.arange(-5,5)
+        self.xs = [X(self.mr,self.mr,self.mr)]
+        self.ys = [Y(self.mr,self.mr,self.mr)]
+        self.zs = [Z(self.mr,self.mr,self.mr)]
+
+        if self.Z_sym == 0:
+            self.X, self.Y = np.meshgrid(self.xs, self.ys)
+        else:
+            self.X, self.Y, self.Z = np.meshgrid(self.xs, self.ys, self.zs)
+            self.zcomp = .2*(self.Z)
+        
+        self.xcomp = .2*(self.X)
+        self.ycomp = .2*(self.Y)
+
+    def vis(self):
+        if self.Z_sym == 0:
+            plt.quiver(self.X, self.Y, self.xcomp, self.ycomp)
+        else:
+            fig = plt.figure()
+            ax = fig.gca(projection='3d')
+            ax.quiver(self.X, self.Y, self.Z, self.xcomp, self.ycomp, self.zcomp)
+
+        plt.title("Vector field of %s + %s + %s" % (self.ihat, self.jhat, self.khat))
+        plt.show()
+
 
 class VVF:
 
